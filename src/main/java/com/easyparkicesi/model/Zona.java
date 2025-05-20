@@ -1,22 +1,24 @@
 package com.easyparkicesi.model;
 
-import jakarta.persistence.*;
 import java.util.List;
 
-@Entity
 public class Zona {
 
-    @Id
     private String id;
+    private int cantidad;
+    private List<Parqueadero> parqueaderos;
 
-    private String nombre;
+    public Zona() {
+        // Constructor vacío requerido por Firebase
+    }
 
-    private int parqueaderos;
+    public Zona(String id, int cantidad, List<Parqueadero> parqueaderos) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.parqueaderos = parqueaderos;
+    }
 
-    @OneToMany(mappedBy = "zona", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Parqueadero> listaParqueaderos;
-
-    // Getters y Setters
+    // Getters y setters
     public String getId() {
         return id;
     }
@@ -25,27 +27,20 @@ public class Zona {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public int getParqueaderos() {
+    public List<Parqueadero> getParqueaderos() {
         return parqueaderos;
     }
 
-    public void setParqueaderos(int parqueaderos) {
+    public void setParqueaderos(List<Parqueadero> parqueaderos) {
         this.parqueaderos = parqueaderos;
     }
 
-    public List<Parqueadero> getListaParqueaderos() {
-        return listaParqueaderos;
-    }
-
-    public void setListaParqueaderos(List<Parqueadero> listaParqueaderos) {
-        this.listaParqueaderos = listaParqueaderos;
-    }
 }
