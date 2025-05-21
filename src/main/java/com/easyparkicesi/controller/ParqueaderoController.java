@@ -67,22 +67,19 @@ public class ParqueaderoController {
 
             for (Map.Entry<String, Zona> entry : zonas.entrySet()) {
                 Zona zona = entry.getValue();
-                int cantidad = zona.getCantidad();
+                int total = zona.getCantidad();
                 int ocupados = 0;
-                int disponibles = 0;
 
                 if (zona.getParqueaderos() != null) {
-                    for (Parqueadero p : zona.getParqueaderos()) { // Cambiado aquí
-                        if (p.isDisponible()) {
-                            disponibles++;
-                        } else {
+                    for (Parqueadero p : zona.getParqueaderos()) {
+                        if (!p.isDisponible()) {
                             ocupados++;
                         }
                     }
                 }
 
-             resumenList.add(new ResumenZonaDTO(zona.getId(),cantidad, ocupados, disponibles));
-           }
+                resumenList.add(new ResumenZonaDTO(zona.getId(), ocupados, total));
+            }
 
             return ResponseEntity.ok(resumenList);
 
