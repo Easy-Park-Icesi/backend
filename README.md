@@ -48,7 +48,7 @@ Para que el backend permita solicitudes CORS correctamente, es necesario especif
 
 Para configurar el origen permitido, modifica el archivo:
 
-src/main/com.easyparkicesi/resource/application.properties
+### src/main/com.easyparkicesi/resource/application.properties
 
 Y actualiza la propiedad `frontend.url` con la URL donde se ejecuta tu frontend. Por ejemplo:
 
