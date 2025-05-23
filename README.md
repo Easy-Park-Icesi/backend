@@ -54,5 +54,5 @@ Y actualiza la propiedad `frontend.url` con la URL donde se ejecuta tu frontend.
 
 ```properties
 frontend.url=http://localhost:3000
-
+```
 Guarda los cambios y reinicia el backend para que la configuración surta efecto.
