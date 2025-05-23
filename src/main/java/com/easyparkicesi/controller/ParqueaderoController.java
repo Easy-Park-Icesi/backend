@@ -17,7 +17,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
-
 @RestController
 @RequestMapping("/api/zonas")
 public class ParqueaderoController {
