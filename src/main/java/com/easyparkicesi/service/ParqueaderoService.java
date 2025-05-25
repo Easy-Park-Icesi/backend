@@ -11,18 +11,10 @@ import java.util.ArrayList;
 @Service
 public class ParqueaderoService {
 
-    private DatabaseReference db;
-
-    // Método para obtener la referencia de Firebase de forma lazy
-    private DatabaseReference getDbReference() {
-        if (db == null) {
-            db = FirebaseDatabase.getInstance().getReference("zonas");
-        }
-        return db;
-    }
+    private final DatabaseReference db = FirebaseDatabase.getInstance().getReference("zonas");
 
     public void toggleDisponibilidadParqueadero(String zonaId, String parqueaderoId) {
-        getDbReference().child(zonaId).child("parqueaderos")
+        db.child(zonaId).child("parqueaderos")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
@@ -59,7 +51,7 @@ public class ParqueaderoService {
     }
 
     public void contarOcupados(String zonaId, Callback callback) {
-        getDbReference().child(zonaId).child("parqueaderos")
+        db.child(zonaId).child("parqueaderos")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
